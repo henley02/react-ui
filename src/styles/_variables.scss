@@ -243,6 +243,7 @@ $alert-icon-font-weight: $font-weight-normal;
 $alert-icon-font-size: $sub-sup-font-size;
 /**-------------alert end-----------*/
 
+/*--------------menu start---------*/
 // menu
 $menu-border-width: $border-width !default;
 $menu-border-color: $border-color !default;
@@ -261,6 +262,7 @@ $menu-item-disabled-color: $gray-600 !default;
 //submenu
 $submenu-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12),
   0 0 6px 0 rgba(0, 0, 0, 0.04);
+/*--------------menu end---------*/
 
 //input
 $input-padding-y: $btn-padding-y !default;

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor, cleanup } from "@testing-library/react";
 import Alert, { AlertProps } from "./alert";
 
 const testProps: AlertProps = {
@@ -17,8 +17,8 @@ const testSuccessAlertProp: AlertProps = {
 
 describe("test Alert Component", () => {
   it("should render the correct default Alert", async function () {
-    const wrapper = render(<Alert {...testProps}>Alert</Alert>);
-    const element = wrapper.queryByText("Alert");
+    const wrapper = render(<Alert {...testProps}>Nice</Alert>);
+    const element = wrapper.queryByText("Nice");
 
     expect(element).toBeInTheDocument();
     expect(element?.tagName).toEqual("P");
@@ -41,6 +41,7 @@ describe("test Alert Component", () => {
   });
 
   it("should render the correct component based on different props", async function () {
+    cleanup();
     const wrapper = render(<Alert {...testSuccessAlertProp}>Nice</Alert>);
     const element = wrapper.queryByText("Nice");
     expect(element).toBeInTheDocument();
@@ -50,8 +51,10 @@ describe("test Alert Component", () => {
 
     const iconElement = wrapper.queryByText("关闭") as HTMLElement;
     expect(iconElement).toBeInTheDocument();
+
     fireEvent.click(iconElement);
-    await (() => {
+    await waitFor(() => {
+      expect(iconElement).not.toBeInTheDocument();
       expect(element).not.toBeInTheDocument();
     });
   });
