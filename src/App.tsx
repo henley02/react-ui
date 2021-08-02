@@ -4,6 +4,8 @@ import Alert from "./components/Alert/alert";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
+import Tabs from "./components/Tabs/tabs";
+import TabsItem from "./components/Tabs/tabsItem";
 
 function App() {
   const a = 123;
@@ -14,6 +16,29 @@ function App() {
 
   return (
     <div className="App">
+      <div className="tabs-component">
+        <Tabs
+          defaultIndex={0}
+          onSelect={(selectedIndex) => {
+            console.log(selectedIndex);
+          }}
+        >
+          <TabsItem label="card1">this is card one</TabsItem>
+          <TabsItem label="card2">this is content two</TabsItem>
+          <TabsItem label="disabled" disabled={true}>
+            this is content three
+          </TabsItem>
+        </Tabs>
+        <br />
+        <Tabs defaultIndex={0} styleType="outline" onSelect={() => {}}>
+          <TabsItem label="card1">this is card one</TabsItem>
+          <TabsItem label="card2">this is content two</TabsItem>
+          <TabsItem label="disabled" disabled={true}>
+            this is content three
+          </TabsItem>
+        </Tabs>
+      </div>
+      <br />
       <div className="button-example">
         <Button>Nice</Button>
         <Button onClick={() => alert(1123)} autoFocus className="123131">
