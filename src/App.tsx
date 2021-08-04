@@ -6,6 +6,7 @@ import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
 import Tabs from "./components/Tabs/tabs";
 import TabsItem from "./components/Tabs/tabsItem";
+import Icon from "./components/Icon/icon";
 
 function App() {
   const a = 123;
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <Icon icon={"coffee"} theme={"primary"} size={"10x"} />
       <div className="tabs-component">
         <Tabs
           defaultIndex={0}
