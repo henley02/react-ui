@@ -1,14 +1,14 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
-import Button, { ButtonProps, ButtonSize, ButtonType } from "./button";
+import Button, { ButtonProps } from "./button";
 
 const defaultProps = {
   onClick: jest.fn(),
 };
 
 const testProps: ButtonProps = {
-  btnType: ButtonType.Primary,
-  size: ButtonSize.Large,
+  btnType: "primary",
+  size: "lg",
   className: "k-class",
   onClick: jest.fn(),
 };
@@ -38,7 +38,7 @@ describe("test Button components", () => {
   });
   it("should render a link when btnTypes equals link and href is provided", function () {
     const wrapper = render(
-      <Button btnType={ButtonType.Link} href={"http://baidu.com"}>
+      <Button btnType="link" href={"http://baidu.com"}>
         Link
       </Button>
     );
@@ -59,7 +59,7 @@ describe("test Button components", () => {
   it("should render disabled link  when disabled set to true", function () {
     const wrapper = render(
       <Button
-        btnType={ButtonType.Link}
+        btnType="link"
         href={"http.baidu.com"}
         disabled
         style={{ display: "none", backgroundColor: "red" }}

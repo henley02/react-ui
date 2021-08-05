@@ -1,5 +1,5 @@
-import React from "react";
-import Button, { ButtonSize, ButtonType } from "./components/Button/button";
+import React, { useState } from "react";
+import Button from "./components/Button/button";
 import Alert from "./components/Alert/alert";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
@@ -7,16 +7,19 @@ import SubMenu from "./components/Menu/subMenu";
 import Tabs from "./components/Tabs/tabs";
 import TabsItem from "./components/Tabs/tabsItem";
 import Icon from "./components/Icon/icon";
+import Transition from "./components/Transition/transition";
 
 function App() {
-  const a = 123;
-
-  if (a === 123) {
-    console.log(12312);
-  }
+  const [show, setShow] = useState(false);
 
   return (
     <div className="App">
+      <Transition animation={"zoom-in-right"} in={show} timeout={200} wrapper>
+        <Button>1231231231</Button>
+      </Transition>
+      <Button size={"lg"} onClick={() => setShow(!show)}>
+        handleClick
+      </Button>
       <Icon icon={"coffee"} theme={"primary"} size={"10x"} />
       <div className="tabs-component">
         <Tabs
@@ -47,18 +50,18 @@ function App() {
           1312312
         </Button>
         <Button disabled>1312312</Button>
-        <Button btnType={ButtonType.Primary}>1312312</Button>
-        <Button btnType={ButtonType.Danger}>1312312</Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>
+        <Button btnType={"primary"}>1312312</Button>
+        <Button btnType={"danger"}>1312312</Button>
+        <Button btnType={"primary"} size={"lg"}>
           1312312
         </Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Small}>
+        <Button btnType={"primary"} size={"sm"}>
           1312312
         </Button>
-        <Button btnType={ButtonType.Link} href={"www.baidu.com"}>
+        <Button btnType={"link"} href={"www.baidu.com"}>
           1312312
         </Button>
-        <Button btnType={ButtonType.Link} href={"www.baidu.com"} disabled>
+        <Button btnType="link" href={"www.baidu.com"} disabled>
           1312312
         </Button>
       </div>
