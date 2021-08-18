@@ -1,20 +1,42 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import classnames from "classnames";
 import Icon from "../Icon/icon";
 import Transition from "../Transition/transition";
-export type AlertType = "success" | "primary" | "warning" | "danger";
 
+// export type AlertType = ;
 export interface AlertProps {
-  title?: string;
+  /**
+   * 文字内容
+   */
+  title: string;
+  /**
+   * 是否显示关闭按钮
+   */
   closable?: boolean;
+  /**
+   * 自定义关闭按钮
+   */
   customClose?: string;
+  /**
+   * 点击关闭按钮的回调
+   */
   onClose?: () => void;
-  children?: React.ReactNode;
-  type?: AlertType;
+  /**
+   * 类型
+   */
+  type?: "success" | "primary" | "warning" | "danger";
 }
 
-const Alert: React.FC<AlertProps> = (props) => {
-  const { title, closable, type, customClose, onClose, children } = props;
+export const Alert: FC<AlertProps> = (props) => {
+  const {
+    title,
+    closable,
+    type,
+    customClose,
+    onClose,
+    children,
+    ...restProps
+  } = props;
   const [visible, setVisible] = useState(true);
 
   const customCloseP = customClose || (
@@ -39,7 +61,7 @@ const Alert: React.FC<AlertProps> = (props) => {
       timeout={300}
       wrapper={true}
     >
-      <div className={classes}>
+      <div className={classes} {...restProps}>
         {title ? <h4 className={"alert-title"}>{title}</h4> : null}
         <p className="alert-message">{children}</p>
         {closable ? <i onClick={handleClick}>{customCloseP}</i> : null}
@@ -50,6 +72,7 @@ const Alert: React.FC<AlertProps> = (props) => {
 
 Alert.defaultProps = {
   type: "primary",
+  closable: true,
 };
 
 export default Alert;

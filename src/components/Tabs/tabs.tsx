@@ -10,13 +10,17 @@ import { TabsItemProps } from "./tabsItem";
 type TabStyle = "underline" | "outline";
 
 export interface TabsProps {
+  /** 默认active的菜单项索引值 */
   defaultIndex?: number;
+  /** 设置 Tabs 样式 */
   styleType?: TabStyle;
+  /** 点击Tab时触发的回调函数 */
   onSelect?: (selectedIndex: number) => void;
+  /** Tabs的className */
   className?: string;
 }
 
-const Tabs: FC<TabsProps> = (props) => {
+export const Tabs: FC<TabsProps> = (props) => {
   const {
     defaultIndex,
     styleType,
@@ -30,7 +34,7 @@ const Tabs: FC<TabsProps> = (props) => {
     "tabs-outline": styleType === "outline",
   });
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(defaultIndex);
   function handleClick(index: number, disabled: boolean = false): void {
     if (disabled) {
       return;
@@ -73,6 +77,7 @@ const Tabs: FC<TabsProps> = (props) => {
 };
 
 Tabs.defaultProps = {
+  defaultIndex: 0,
   styleType: "underline",
 };
 export default Tabs;

@@ -8,7 +8,6 @@ import Tabs from "./components/Tabs/tabs";
 import TabsItem from "./components/Tabs/tabsItem";
 import Icon from "./components/Icon/icon";
 import Transition from "./components/Transition/transition";
-
 function App() {
   const [show, setShow] = useState(false);
 

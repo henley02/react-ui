@@ -12,13 +12,16 @@ import { MenuItemProps } from "./menuItem";
 import Transition from "../Transition/transition";
 
 export interface SubMenuProps {
+  /** 设置subMenu的标题 */
   title: string;
+  /** 设置subMenu的索引 */
   index?: string;
+  /** 设置subMenu的className */
   className?: string;
   defaultOpenSubMenus?: [];
 }
 
-const SubMenu: React.FC<SubMenuProps> = (props) => {
+export const SubMenu: React.FC<SubMenuProps> = (props) => {
   const context = useContext(MenuContext);
   const { title, index, className, children } = props;
   const openSubMenus = context.defaultOpenSubMenus as Array<string>;

@@ -6,11 +6,17 @@ type MenuMode = "horizontal" | "vertical";
 type SelectCall = (selectedIndex: string) => void;
 
 export interface MenuProps {
+  /** 默认active 的菜单项索引值 */
   defaultIndex?: string;
+  /** 自定义类名 */
   className?: string;
+  /** 菜单的展示形式 横向或者纵向 */
   mode?: MenuMode;
+  /** 设置 菜单 样式 */
   style?: React.CSSProperties;
+  /** 点击菜单触发的回调函数 */
   onSelect?: SelectCall;
+  /** 设置子菜单的默认打开*/
   defaultOpenSubMenus?: string[];
 }
 
@@ -22,7 +28,7 @@ interface IMenuContext {
 }
 
 export const MenuContext = createContext<IMenuContext>({ index: "0" });
-const Menu: React.FC<MenuProps> = (props) => {
+export const Menu: React.FC<MenuProps> = (props) => {
   const {
     defaultIndex,
     className,
