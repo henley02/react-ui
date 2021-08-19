@@ -3,12 +3,12 @@ import classnames from "classnames";
 import Icon from "../Icon/icon";
 import Transition from "../Transition/transition";
 
-// export type AlertType = ;
+export type AlertType = "success" | "primary" | "warning" | "danger";
 export interface AlertProps {
   /**
    * 文字内容
    */
-  title: string;
+  title?: string;
   /**
    * 是否显示关闭按钮
    */
@@ -24,7 +24,7 @@ export interface AlertProps {
   /**
    * 类型
    */
-  type?: "success" | "primary" | "warning" | "danger";
+  type?: AlertType;
 }
 
 export const Alert: FC<AlertProps> = (props) => {

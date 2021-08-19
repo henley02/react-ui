@@ -8,11 +8,47 @@ import Tabs from "./components/Tabs/tabs";
 import TabsItem from "./components/Tabs/tabsItem";
 import Icon from "./components/Icon/icon";
 import Transition from "./components/Transition/transition";
+import Input from "./components/Input/input";
 function App() {
   const [show, setShow] = useState(false);
+  const [inputVal, setInputVal] = useState("");
 
   return (
     <div className="App">
+      <Input disabled />
+      <Input
+        onChange={(e) => {
+          setInputVal(e.target.value);
+        }}
+        type="tel"
+        defaultValue={"123123"}
+        value={inputVal}
+        icon={"columns"}
+      />
+      <Input
+        onChange={(e) => console.log(e)}
+        type="tel"
+        size={"lg"}
+        placeholder={"13123"}
+        icon={"columns"}
+      />
+      <Input
+        style={{ width: "300px" }}
+        placeholder="input with icon"
+        icon="search"
+      />
+      <Input
+        onChange={(e) => console.log(e)}
+        type="tel"
+        placeholder={"13123"}
+        prepend="https://"
+      />
+      <Input
+        onChange={(e) => console.log(e.target.value)}
+        type="tel"
+        placeholder={"13123"}
+        append=".com"
+      />
       <Transition animation={"zoom-in-right"} in={show} timeout={200} wrapper>
         <Button>1231231231</Button>
       </Transition>
